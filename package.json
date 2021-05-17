@@ -1,0 +1,22 @@
+{
+  "name": "next-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/mehmetemredogan/next-app.git",
+  "author": "Mehmet Emre Doğan <med@mehmetemredogan.com.tr>",
+  "license": "MIT",
+  "dependencies": {
+    "accept-language-parser": "^1.5.0",
+    "next": "^10.2.0",
+    "nookies": "^2.5.2",
+    "nprogress": "^0.2.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "scripts": {
+    "windev": "next dev",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  }
+}
