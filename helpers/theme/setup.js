@@ -1,35 +1,33 @@
 import nookies from "nookies"
+import SetCookie from "../cookie/set";
+
+let cookieData = {
+    key: "theme",
+    value: "",
+    time: 90,
+    path: "/",
+    domain: process.env.COOKIE_DOMAIN,
+    sameSite: "Lax"
+}
 
 function SetupTheme(ctx, defaultTheme) {
     // Get Cookies
-    let cookies = nookies.get(ctx)
+    let cookies         = nookies.get(ctx)
 
-    if (typeof cookies.theme === 'undefined') {
-        setThemeCookie(ctx, defaultTheme)
-    } else {
+    cookieData.value    = defaultTheme
+
+    if (typeof cookies.theme !== 'undefined') {
         switch (cookies.theme) {
             case 'light':
-                setThemeCookie(ctx, 'light')
-                return 'light'
+                cookieData.value    = "light"
+                break
             case 'dark':
-                setThemeCookie(ctx, 'dark')
-                return 'dark'
-            default:
-                setThemeCookie(ctx, defaultTheme)
-                return defaultTheme
+                cookieData.value    = "dark"
+                break
         }
     }
-}
 
-function setThemeCookie(ctx, theme) {
-    nookies.set(ctx, 'theme', theme,
-        {
-            maxAge: 90 * 24 * 60 * 60,          // 90 Days
-            path: '/',                          // Main Path
-            domain: process.env.COOKIE_DOMAIN,  // Cookie Somain
-            sameSite: 'Lax'                     // All Subdomains
-        }
-    )
+    SetCookie(ctx, cookieData.key, cookieData.value, cookieData.time, cookieData.path, cookieData.domain, cookieData.sameSite)
 }
 
 export default SetupTheme
