@@ -12,7 +12,7 @@ function DetectLanguage(ctx) {
     let cookies = nookies.get(ctx)
 
     if (typeof cookies.language !== 'undefined') {
-        switch (cookies.theme) {
+        switch (cookies.language) {
             case 'tr-TR':
                 out = {
                     code: 'tr-TR',
