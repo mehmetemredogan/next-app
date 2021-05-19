@@ -39,8 +39,8 @@ App.getInitialProps = async ({ ctx }) => {
         method          = ctx.req.headers[":method"] ? ctx.req.headers[":method"] : "N/A",
         path            = ctx.req.url,
         cookie          = ctx.req.headers.cookie ? ctx.req.headers.cookie : undefined,
-        theme           = DetectLanguage(ctx, process.env.DEFAULT_THEME),
-        language        = DetectTheme(ctx, acceptLanguage)
+        theme           = DetectTheme(ctx, process.env.DEFAULT_THEME),
+        language        = DetectLanguage(ctx, acceptLanguage)
 
     return {
         pageProps: {
