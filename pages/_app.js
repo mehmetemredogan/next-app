@@ -38,7 +38,6 @@ App.getInitialProps = async ({ ctx }) => {
         ip              = DetectIP(ctx),
         method          = ctx.req.headers[":method"] ? ctx.req.headers[":method"] : "N/A",
         path            = ctx.req.url,
-        cookie          = ctx.req.headers.cookie ? ctx.req.headers.cookie : undefined,
         theme           = DetectTheme(ctx, process.env.DEFAULT_THEME),
         language        = DetectLanguage(ctx, acceptLanguage)
 
@@ -48,7 +47,6 @@ App.getInitialProps = async ({ ctx }) => {
             secCHua: secCHua,
             acceptLanguage: acceptLanguage,
             ip: ip,
-            cookie: cookie,
             pagePath: path,
             method: method,
             language,

@@ -28,6 +28,8 @@ function SetupTheme(ctx, defaultTheme) {
     }
 
     SetCookie(ctx, cookieData.key, cookieData.value, cookieData.time, cookieData.path, cookieData.domain, cookieData.sameSite)
+
+    return cookieData.value
 }
 
 export default SetupTheme
