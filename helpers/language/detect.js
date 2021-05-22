@@ -1,4 +1,5 @@
 import nookies from "nookies"
+import HrefLang from "./hreflang";
 
 let out = {
     code: 'tr-TR',
@@ -30,6 +31,12 @@ function DetectLanguage(ctx) {
                 }
                 break
         }
+    }
+
+    // hreflang Detect
+    let hreflang    = HrefLang(ctx.query)
+    if (hreflang !== false) {
+        out = hreflang
     }
 
     return out

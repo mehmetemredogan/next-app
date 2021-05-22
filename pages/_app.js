@@ -36,7 +36,7 @@ App.getInitialProps = async ({ ctx }) => {
         secCHua         = ctx.req.headers["sec-ch-ua"] ? ctx.req.headers["sec-ch-ua"] : "N/A",
         acceptLanguage  = ctx.req.headers["accept-language"] ? ctx.req.headers["accept-language"] : process.env.DEFAULT_LANGUAGE,
         ip              = DetectIP(ctx),
-        method          = ctx.req.headers[":method"] ? ctx.req.headers[":method"] : "N/A",
+        method          = ctx.req.method ? ctx.req.method : (ctx.req.headers[":method"] ? ctx.req.headers[":method"] : "N/A"),
         path            = ctx.req.url,
         theme           = DetectTheme(ctx, process.env.DEFAULT_THEME),
         language        = DetectLanguage(ctx, acceptLanguage)

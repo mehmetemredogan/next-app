@@ -2,6 +2,7 @@ import nookies from "nookies"
 import ALParser from "accept-language-parser"
 
 import SetCookie from "../cookie/set"
+import HrefLang from "./hreflang";
 
 let out = {
         code: 'tr-TR',
@@ -75,6 +76,12 @@ function SetupLanguage(ctx, acceptLanguage) {
         }
 
         SetCookie(ctx, cookieData.key, out.code, cookieData.time, cookieData.path, cookieData.domain, cookieData.sameSite)
+    }
+
+    // hreflang Detect
+    let hreflang    = HrefLang(ctx.query)
+    if (hreflang !== false) {
+        out = hreflang
     }
 
     return out
