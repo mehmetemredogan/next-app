@@ -5,7 +5,7 @@ import SetupTheme from "../helpers/theme/setup"
 import SetupLanguage from "../helpers/language/setup";
 
 class MyDocument extends Document {
-    static async getInitialProps(ctx ) {
+    static async getInitialProps(ctx) {
         const initialProps  = await Document.getInitialProps(ctx)
 
         let acceptLanguage  = process.env.DEFAULT_LANGUAGE

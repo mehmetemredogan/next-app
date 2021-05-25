@@ -16,6 +16,7 @@ import Router from "next/router";
 import DetectLanguage from "../helpers/language/detect";
 import DetectTheme from "../helpers/theme/detect";
 import DetectIP from "../helpers/ip/detect";
+import GetBrowserTheme from "../helpers/theme/browser";
 
 Router.onRouteChangeStart = url => {
     nprogress.start()
@@ -26,6 +27,10 @@ Router.onRouteChangeComplete = () => nprogress.done()
 Router.onRouteChangeError = () => nprogress.done()
 
 const App = ({Component, pageProps}) => {
+    React.useEffect(() => {
+        GetBrowserTheme()
+    });
+
     return (
         <Component {...pageProps} />
     )

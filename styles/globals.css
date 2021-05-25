@@ -1,6 +1,13 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #fff;
     font-family: Arial, sans-serif;
+}
+
+.dark {
+    background-color: #000;
+}
+
+.light {
+    background-color: #fff;
 }
