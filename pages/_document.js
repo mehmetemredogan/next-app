@@ -2,7 +2,7 @@ import React from "react"
 import Document, {Head, Html, Main, NextScript} from "next/document"
 
 import SetupTheme from "../helpers/theme/setup"
-import SetupLanguage from "../helpers/language/setup";
+import SetupLanguage from "../helpers/language/setup"
 
 class MyDocument extends Document {
     static async getInitialProps(ctx) {

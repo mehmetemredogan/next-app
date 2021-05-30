@@ -10,13 +10,10 @@ import nprogress from "nprogress"
 // https://github.com/kazzkiq/balloon.css
 import "../styles/balloon.css"
 
-import React from "react";
-import Router from "next/router";
+import React from "react"
+import Router from "next/router"
 
-import DetectLanguage from "../helpers/language/detect";
-import DetectTheme from "../helpers/theme/detect";
-import DetectIP from "../helpers/ip/detect";
-import GetBrowserTheme from "../helpers/theme/browser";
+import GetBrowserTheme from "../helpers/theme/browser"
 
 Router.onRouteChangeStart = url => {
     nprogress.start()
@@ -29,7 +26,7 @@ Router.onRouteChangeError = () => nprogress.done()
 const App = ({Component, pageProps}) => {
     React.useEffect(() => {
         GetBrowserTheme()
-    });
+    })
 
     return (
         <Component {...pageProps} />
@@ -37,25 +34,9 @@ const App = ({Component, pageProps}) => {
 }
 
 App.getInitialProps = async ({ ctx }) => {
-    let browser         = ctx.req.headers["user-agent"] ? ctx.req.headers["user-agent"] : "N/A",
-        secCHua         = ctx.req.headers["sec-ch-ua"] ? ctx.req.headers["sec-ch-ua"] : "N/A",
-        acceptLanguage  = ctx.req.headers["accept-language"] ? ctx.req.headers["accept-language"] : process.env.DEFAULT_LANGUAGE,
-        ip              = DetectIP(ctx),
-        method          = ctx.req.method ? ctx.req.method : (ctx.req.headers[":method"] ? ctx.req.headers[":method"] : "N/A"),
-        path            = ctx.req.url,
-        theme           = DetectTheme(ctx, process.env.DEFAULT_THEME),
-        language        = DetectLanguage(ctx, acceptLanguage)
-
     return {
         pageProps: {
-            browser: browser,
-            secCHua: secCHua,
-            acceptLanguage: acceptLanguage,
-            ip: ip,
-            pagePath: path,
-            method: method,
-            language,
-            theme: theme
+            "ssr": true
         }
     }
 }
